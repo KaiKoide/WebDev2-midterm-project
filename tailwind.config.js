@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'hero-image': "url('/images/header.webp')"
+        "hero-image": "url('/images/header.webp')"
       }
     },
   },
