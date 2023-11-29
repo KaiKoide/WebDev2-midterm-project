@@ -16,12 +16,11 @@ function App() {
     setCartProducts
   }
 
-
   return (
     <>
       <HeroSection />
       <ProductArray.Provider value={value}>
-        <MenuSection cartProducts={cartProducts} setCartProducts={setCartProducts}  />
+        <MenuSection />
       </ProductArray.Provider>
     </>
   )

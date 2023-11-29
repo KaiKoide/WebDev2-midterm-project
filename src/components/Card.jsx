@@ -16,24 +16,11 @@ function Card({ book }) {
     const title = card.querySelector('h2').textContent;
     const price = card.querySelector('.card-price').textContent;
     const image = card.querySelector('img').src;
-    // console.log(title);
-    // console.log(name);
-    // console.log(price);
-    // console.log(id);
-    // console.log(image);
 
     const updateArray = [
       ...cartProducts,
-      // {
-      //   id: id,
-      //   title:title,
-      //   name:name,
-      //   price:price,
-      //   image:image
-      // }
       {id, title, price, image}
     ]
-    // onClick(updateArray);
     console.log(updateArray);
     setCartProducts(updateArray);
 
