@@ -26,10 +26,10 @@ function ShoppingCart({
             ? "block"
             : "none"
         }}>
-        <div className='shopping-cart'>
-          <div className='header-custom'>
-            <h2>shopping cart</h2>
-            <button  className='btn close-btn' onClick={onClose}>
+        <div className='shopping-cart rounded-md'>
+          <div className='header-custom p-3 rounded-md'>
+            <h2 className='text-3xl font-bold capitalize'>shopping cart</h2>
+            <button  className='close-btn text-2xl duration-200 hover:opacity-50' onClick={onClose}>
               <AiFillCloseCircle />
             </button>
           </div>
