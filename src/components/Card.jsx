@@ -4,7 +4,7 @@ import { useState, useContext } from "react";
 import { ProductArray } from '../App';
 
 function Card({ book }) {
-  const { products, setProducts } = useContext(ProductArray);
+  const { cartProducts, setCartProducts } = useContext(ProductArray);
 
   // const [piece, setPiece] = useState(0);
 
@@ -14,7 +14,6 @@ function Card({ book }) {
     // console.log(card);
     const id = card.id;
     const title = card.querySelector('h2').textContent;
-    const name = card.querySelector('.card-author').textContent;
     const price = card.querySelector('.card-price').textContent;
     const image = card.querySelector('img').src;
     // console.log(title);
@@ -24,7 +23,7 @@ function Card({ book }) {
     // console.log(image);
 
     const updateArray = [
-      ...products,
+      ...cartProducts,
       // {
       //   id: id,
       //   title:title,
@@ -32,11 +31,11 @@ function Card({ book }) {
       //   price:price,
       //   image:image
       // }
-      {id, title, name, price, image}
+      {id, title, price, image}
     ]
     // onClick(updateArray);
     console.log(updateArray);
-    setProducts(updateArray);
+    setCartProducts(updateArray);
 
   }
 

@@ -10,10 +10,10 @@ export const ProductArray = createContext();
 function App() {
 
   // const [cartsVisibility, setCartsVisibility] = useState(false);
-  const [products, setProducts] = useState([]);
+  const [cartProducts, setCartProducts] = useState([]);
   const value = {
-    products,
-    setProducts
+    cartProducts,
+    setCartProducts
   }
 
 
@@ -21,7 +21,7 @@ function App() {
     <>
       <HeroSection />
       <ProductArray.Provider value={value}>
-        <MenuSection products={products} setProducts={setProducts}  />
+        <MenuSection cartProducts={cartProducts} setCartProducts={setCartProducts}  />
       </ProductArray.Provider>
     </>
   )
