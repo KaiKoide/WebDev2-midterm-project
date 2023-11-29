@@ -1,0 +1,44 @@
+.modal-custom {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000055 !important;
+  z-index: 10;
+}
+
+.shopping-cart {
+  width: 60%;
+  height: 90%;
+  margin: 2rem auto;
+  background-color: #eee;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  color: black;
+}
+
+.shopping-cart .header-custom {
+  display: flex;
+  background-color: #ccc;
+  pad: 10px 20px;
+  justify-content: space-between;
+}
+
+.empty-text {
+  display: block;
+  padding: 2rem;
+  margin: auto;
+}
+
+.cart-products {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem 0;
+  overflow-y: scroll;
+}
