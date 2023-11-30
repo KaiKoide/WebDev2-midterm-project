@@ -32,6 +32,10 @@ function ShoppingCart({
     setCartProducts(newCartProducts);
   }
 
+  const onRemoveAllProducts = () => {
+    setCartProducts([]);
+  }
+
 
   return (
     <>
@@ -85,7 +89,10 @@ function ShoppingCart({
                 </button>
               </div>
             ))}
-            {cartProducts.length > 0 && <button className='btn checkout-btn bg-slate-800'>Proceed to checkout</button>}
+            <div className='flex gap-3'>
+              {cartProducts.length > 0 && <button className='btn checkout-btn bg-slate-800' onClick={onRemoveAllProducts}>All Clear</button>}
+              {cartProducts.length > 0 && <button className='btn checkout-btn bg-slate-800'>Proceed to checkout</button>}
+            </div>
           </div>
         </div>
       </div>
