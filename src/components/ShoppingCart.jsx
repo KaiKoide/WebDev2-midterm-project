@@ -36,6 +36,12 @@ function ShoppingCart({
     setCartProducts([]);
   }
 
+  const totalAmount = cartProducts.reduce((amount, product) => product.price + amount, 0);
+  const formattedAmount = new Intl.NumberFormat('en-CA', {
+    style: 'currency',
+    currency: 'CAD'
+  })
+  .format(totalAmount);
 
   return (
     <>
@@ -55,7 +61,7 @@ function ShoppingCart({
           </div>
           <div className='cart-products'>
             {cartProducts.length === 0 && (
-              <span className='empty-text'>
+              <span className='empty-text font-bold'>
                 Your basket is currently empty
               </span>
             )}
@@ -89,6 +95,7 @@ function ShoppingCart({
                 </button>
               </div>
             ))}
+            <div className='text-2xl font-bold capitalize'>Total: <span>{formattedAmount}</span></div>
             <div className='flex gap-3'>
               {cartProducts.length > 0 && <button className='btn checkout-btn bg-slate-800' onClick={onRemoveAllProducts}>All Clear</button>}
               {cartProducts.length > 0 && <button className='btn checkout-btn bg-slate-800'>Proceed to checkout</button>}
