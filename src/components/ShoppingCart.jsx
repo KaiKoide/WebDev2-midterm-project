@@ -1,7 +1,11 @@
 import react from 'react';
 import "../style/shoppingCart.css";
+import { useState, useContext } from "react";
+import { ProductArray } from '../App';
 import { AiFillCloseCircle } from "react-icons/ai";
 import { RiDeleteBin6Line } from "react-icons/ri";
+
+
 
 function ShoppingCart({
   // Visibility for the shopping cart
@@ -16,6 +20,10 @@ function ShoppingCart({
   onQuantityChange,
   addProductToCart
 }) {
+  const { cartProducts, updateCart } = useContext(ProductArray);
+
+  console.log('Shopping cart', cartProducts);
+
 
   return (
     <>
@@ -33,31 +41,32 @@ function ShoppingCart({
               <AiFillCloseCircle />
             </button>
           </div>
-          {/* <div className='cart-products'>
-            {products.length === 0 && (
+          <div className='cart-products'>
+            {cartProducts.length === 0 && (
               <span className='empty-text'>
                 Your basket is currently empty
               </span>
             )}
-            {products.map(product => (
-              <div className='cart-product' key={product.id}>
+            {cartProducts.map(product => (
+              <div className='cart-product rounded-md' key={product.id}>
                 <img
-                  src={product.picture}
+                  src={product.image}
                   alt={product.title}
+                  className='w-[200px]'
                 />
                 <div className='product-info'>
                   <h3>
                     {product.title}
                   </h3>
-                  <span className='product-price'>
-                    {product.price * product.count}
+                  <span className='product-price before:content-["$"]'>
+                    {product.price * product.qty}
                   </span>
                 </div>
-                <select className='count' value={product.count} onChange={(event) => {
-                  onQuantityChange(product.id, event.target.value);
+                <select className='count' value={product.qty} onChange={(event) => {
+                  // onQuantityChange(product.id, event.target.value);
                 }}>
                   {
-                    [...Array(10).keys()].map(number => {
+                    [...Array(5).keys()].map(number => {
                       const num = number + 1;
                       return <option value={num} key={num}>{num}</option>
                     })
@@ -68,8 +77,8 @@ function ShoppingCart({
                 </button>
               </div>
             ))}
-            {products.length > 0 && <button className='btn checkout-btn'>Proceed to checkout</button>}
-          </div> */}
+            {cartProducts.length > 0 && <button className='btn checkout-btn bg-slate-800'>Proceed to checkout</button>}
+          </div>
         </div>
       </div>
     </>

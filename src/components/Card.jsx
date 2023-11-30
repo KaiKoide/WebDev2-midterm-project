@@ -11,14 +11,14 @@ function Card({ book }) {
     // console.log(book);
 
     const newBook = {
-              id: book.index,
-              title: book.title,
-              price: book.price,
-              image: book.image,
-              qty: 1
-            }
+      id: book.index,
+      title: book.title,
+      price: book.price,
+      image: book.image,
+      qty: 1
+    }
 
-            updateCart(newBook)
+    updateCart(newBook)
 
 
     // setCartProducts(prevArr => {
@@ -59,6 +59,7 @@ function Card({ book }) {
     // console.log(cartProducts);
 
 
+    // Unnecessary codes
     // const updateArray = [
     //   ...cartProducts,
     //   {

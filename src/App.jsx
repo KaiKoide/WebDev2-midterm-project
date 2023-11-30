@@ -15,8 +15,25 @@ function App() {
   console.log("cartProducts", cartProducts)
 
   const updateCart = (product) => {
-    console.log("Product", product)
-    setCartProducts((prev) => [...prev, product])
+    // console.log("Product", product);
+    // console.log("cartProducts",cartProducts)
+    const fn = cartProducts.find((el) => el.title === product.title);
+     console.log('fn', fn);
+    if(fn){
+     console.log('true');
+     setCartProducts((prev) => {
+      return [...prev,
+        {
+          ...fn,
+          qty: fn.qty + 1
+        }
+      ]
+    });
+    } else {
+      setCartProducts((prev) => {
+        return [...prev, product]
+      });
+    }
   }
 
   const value = {
@@ -26,8 +43,8 @@ function App() {
 
   return (
     <>
-      <HeroSection />
       <ProductArray.Provider value={value}>
+        <HeroSection />
         <MenuSection />
       </ProductArray.Provider>
     </>
