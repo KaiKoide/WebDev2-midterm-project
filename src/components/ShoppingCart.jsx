@@ -20,9 +20,17 @@ function ShoppingCart({
   onQuantityChange,
   addProductToCart
 }) {
-  const { cartProducts, updateCart } = useContext(ProductArray);
+  const { cartProducts, setCartProducts } = useContext(ProductArray);
 
-  console.log('Shopping cart', cartProducts);
+  // console.log('Shopping cart', cartProducts);
+
+  const onRemoveProduct = (removedProduct) => {
+    console.log('removedProduct', removedProduct);
+    console.log('cartProducts', cartProducts);
+    const newCartProducts = cartProducts.filter(product => product.id !== removedProduct.id);
+    console.log('newCartProducts', newCartProducts);
+    setCartProducts(newCartProducts);
+  }
 
 
   return (
@@ -72,7 +80,7 @@ function ShoppingCart({
                     })
                   }
                 </select>
-                <button className='btn remove-btn' onClick={() => onProductRemove(product)}>
+                <button className='btn remove-btn' onClick={() => onRemoveProduct(product)}>
                   <RiDeleteBin6Line />
                 </button>
               </div>

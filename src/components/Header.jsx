@@ -1,9 +1,10 @@
 // import { func } from 'prop-types'
-import React, { useState } from 'react'
-import ReactDOM from 'react-dom/client'
+import { useState, useContext } from "react";
+import ReactDOM from 'react-dom/client';
 import ShoppingCart from './ShoppingCart'
-import { IoCartOutline } from "react-icons/io5"
-import { GiBlackBook } from "react-icons/gi"
+import { ProductArray } from '../App';
+import { IoCartOutline } from "react-icons/io5";
+import { GiBlackBook } from "react-icons/gi";
 
 function Header() {
   const [cartsVisibility, setCartsVisibility] = useState(false);
@@ -17,7 +18,8 @@ function Header() {
       ...productsInCart,
       newProduct,
     ]);
-  }
+  };
+  const { cartProducts, updateCart } = useContext(ProductArray);
 
   return (
     <>
@@ -32,7 +34,7 @@ function Header() {
             </ul>
             <button onClick={() => setCartsVisibility(true)} className='shopping-cart-btn flex hover:opacity-80 items-center gap-1'>
               <IoCartOutline className='text-2xl' />
-              <span className="bg-pink-100 text-pink-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300">0</span>
+              <span className="bg-pink-100 text-pink-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300">{cartProducts.length}</span>
             </button>
           </div>
         </nav>

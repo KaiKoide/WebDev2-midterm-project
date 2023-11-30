@@ -12,7 +12,7 @@ function App() {
   // const [cartsVisibility, setCartsVisibility] = useState(false);
   const [cartProducts, setCartProducts] = useState([]);
 
-  console.log("cartProducts", cartProducts)
+  // console.log("cartProducts", cartProducts)
 
   const updateCart = (product) => {
     // console.log("Product", product);
@@ -38,6 +38,7 @@ function App() {
 
   const value = {
     cartProducts,
+    setCartProducts,
     updateCart
   }
 
