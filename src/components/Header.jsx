@@ -8,23 +8,25 @@ import { GiBlackBook } from "react-icons/gi";
 
 function Header() {
   const [cartsVisibility, setCartsVisibility] = useState(false);
-  const [productsInCart, setProductsInCart] = useState([]);
-  const addProductToCart = (product) => {
-    const newProduct = {
-      ...product,
-      count: 1,
-    };
-    setProductsInCart([
-      ...productsInCart,
-      newProduct,
-    ]);
-  };
-  const { cartProducts, updateCart } = useContext(ProductArray);
+  // const [productsInCart, setProductsInCart] = useState([]);
+  // const addProductToCart = (product) => {
+  //   const newProduct = {
+  //     ...product,
+  //     count: 1,
+  //   };
+  //   setProductsInCart([
+  //     ...productsInCart,
+  //     newProduct,
+  //   ]);
+  // };
+  const { cartProducts } = useContext(ProductArray);
+  const totalProducts = cartProducts.reduce((amount, product) => amount + product.qty, 0);
+
 
   return (
     <>
       <header className='flex sm:justify-start w-full text-sm py-4 bg-slate-800 text-zinc-200'>
-        <ShoppingCart visibility={cartsVisibility} products={productsInCart} addProductToCart={addProductToCart} onClose={() => setCartsVisibility(false)} />
+        <ShoppingCart visibility={cartsVisibility} onClose={() => setCartsVisibility(false)} />
         <nav className='max-w-[85rem] w-full mx-auto px-4 flex items-center justify-between'>
           <a className='hover:opacity-80 transition-all duration-100' href='#'><GiBlackBook  className='text-2xl' /></a>
           <div className='flex'>
@@ -34,7 +36,7 @@ function Header() {
             </ul>
             <button onClick={() => setCartsVisibility(true)} className='shopping-cart-btn flex hover:opacity-80 items-center gap-1'>
               <IoCartOutline className='text-2xl' />
-              <span className="bg-pink-100 text-pink-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300">{cartProducts.length}</span>
+              <span className="bg-pink-100 text-pink-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300">{totalProducts}</span>
             </button>
           </div>
         </nav>
