@@ -11,9 +11,17 @@ function App() {
 
   // const [cartsVisibility, setCartsVisibility] = useState(false);
   const [cartProducts, setCartProducts] = useState([]);
+
+  console.log("cartProducts", cartProducts)
+
+  const updateCart = (product) => {
+    console.log("Product", product)
+    setCartProducts((prev) => [...prev, product])
+  }
+
   const value = {
     cartProducts,
-    setCartProducts
+    updateCart
   }
 
   return (
