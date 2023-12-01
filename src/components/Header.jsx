@@ -1,6 +1,4 @@
-// import { func } from 'prop-types'
 import { useState, useContext } from "react";
-import ReactDOM from 'react-dom/client';
 import ShoppingCart from './ShoppingCart'
 import { ProductArray } from '../App';
 import { IoCartOutline } from "react-icons/io5";
@@ -8,17 +6,6 @@ import { GiBlackBook } from "react-icons/gi";
 
 function Header() {
   const [cartsVisibility, setCartsVisibility] = useState(false);
-  // const [productsInCart, setProductsInCart] = useState([]);
-  // const addProductToCart = (product) => {
-  //   const newProduct = {
-  //     ...product,
-  //     count: 1,
-  //   };
-  //   setProductsInCart([
-  //     ...productsInCart,
-  //     newProduct,
-  //   ]);
-  // };
   const { cartProducts } = useContext(ProductArray);
   const totalProducts = cartProducts.reduce((amount, product) => amount + product.qty, 0);
 

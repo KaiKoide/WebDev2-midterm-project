@@ -20,7 +20,6 @@ function App() {
     }
     setCartProducts((prev) => [...prev, {...product, qty: 1 }]);
   };
-  // console.log(cartProducts);
 
   const value = {
     cartProducts,

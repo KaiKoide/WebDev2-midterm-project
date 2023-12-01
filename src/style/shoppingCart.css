@@ -52,6 +52,7 @@
 	background-color: #fff;
 	padding: 10px 20px;
 	border: 3px solid #eee;
+  gap: 10px;
 }
 
 .product-info {

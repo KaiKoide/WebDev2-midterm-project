@@ -1,8 +1,6 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import Card from './Card'
-import fetchData from '../fetchData'
-import { useState, useEffect } from 'react'
+import Card from './Card';
+import fetchData from '../fetchData';
+import { useState, useEffect } from 'react';
 
 
 const RenderBooksInCards = () => {

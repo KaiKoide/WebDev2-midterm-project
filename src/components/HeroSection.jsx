@@ -1,11 +1,6 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import Header from "./Header"
+import Header from "./Header";
 
 function HeroSection() {
-  const heroStyle = {
-    backgroundColor: 'rgba(0, 0, 0, 0.6)'
-  }
   return (
     <>
       <Header />

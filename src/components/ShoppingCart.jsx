@@ -11,15 +11,8 @@ import { AiOutlineMinusCircle } from "react-icons/ai";
 function ShoppingCart({
   // Visibility for the shopping cart
   visibility,
-  // Products in the shopping cart
-  products,
-  // This prop will be run when we want to remove the products
-  onProductRemove,
   // This prop will be run when we want to close the cart
   onClose,
-  // This prop will be run when we want to change a quantity of a product in the cart
-  onQuantityChange,
-  addProductToCart
 }) {
   const { cartProducts, setCartProducts, updateCart } = useContext(ProductArray);
 
