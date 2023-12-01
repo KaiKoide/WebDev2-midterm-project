@@ -1,9 +1,10 @@
-import react from 'react';
 import "../style/shoppingCart.css";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { ProductArray } from '../App';
 import { AiFillCloseCircle } from "react-icons/ai";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { AiOutlinePlusCircle } from "react-icons/ai";
+import { AiOutlineMinusCircle } from "react-icons/ai";
 
 
 
@@ -20,15 +21,10 @@ function ShoppingCart({
   onQuantityChange,
   addProductToCart
 }) {
-  const { cartProducts, setCartProducts } = useContext(ProductArray);
-
-  // console.log('Shopping cart', cartProducts);
+  const { cartProducts, setCartProducts, updateCart } = useContext(ProductArray);
 
   const onRemoveProduct = (removedProduct) => {
-    console.log('removedProduct', removedProduct);
-    console.log('cartProducts', cartProducts);
     const newCartProducts = cartProducts.filter(product => product.id !== removedProduct.id);
-    console.log('newCartProducts', newCartProducts);
     setCartProducts(newCartProducts);
   }
 
@@ -36,12 +32,17 @@ function ShoppingCart({
     setCartProducts([]);
   }
 
-  const totalAmount = cartProducts.reduce((amount, product) => product.price + amount, 0);
-  const formattedAmount = new Intl.NumberFormat('en-CA', {
-    style: 'currency',
-    currency: 'CAD'
-  })
-  .format(totalAmount);
+  const totalAmount = cartProducts.reduce((amount, product) => amount + (product.price * product.qty), 0);
+  const formattedAmount = (amount) => {
+    return new Intl.NumberFormat('en-CA', {
+      style: 'currency',
+      currency: 'CAD'
+    })
+    .format(amount)};
+
+  const handleClick = (product, qty) => {
+    updateCart(product, qty);
+  };
 
   return (
     <>
@@ -76,26 +77,30 @@ function ShoppingCart({
                   <h3>
                     {product.title}
                   </h3>
-                  <span className='product-price before:content-["$"]'>
-                    {product.price * product.qty}
+                  <span className='product-price'>
+                    {formattedAmount(product.price * product.qty)}
                   </span>
                 </div>
-                <select className='count' value={product.qty} onChange={(event) => {
-                  // onQuantityChange(product.id, event.target.value);
-                }}>
-                  {
-                    [...Array(5).keys()].map(number => {
-                      const num = number + 1;
-                      return <option value={num} key={num}>{num}</option>
-                    })
+                <div className="flex justify-between items-center text-[20px] bg-text px-5 rounded-full">
+                  {product.qty > 1 &&
+                    <button className="svg-accent w-6 h-6 cursor-pointer hover:opacity-50" onClick={() => handleClick(product, -1)}>
+                      <AiOutlineMinusCircle />
+                    </button>
                   }
-                </select>
-                <button className='btn remove-btn' onClick={() => onRemoveProduct(product)}>
+                  <p id="number-of-items" className="px-3">{product.qty}</p>
+                  <button className="svg-accent w-6 h-6 cursor-pointer hover:opacity-50" onClick={() => handleClick(product)}>
+                    <AiOutlinePlusCircle />
+                  </button>
+                </div>
+                <div>
+                  <button></button>
+                </div>
+                <button className='btn remove-btn text-2xl' onClick={() => onRemoveProduct(product)}>
                   <RiDeleteBin6Line />
                 </button>
               </div>
             ))}
-            <div className='text-2xl font-bold capitalize'>Total: <span>{formattedAmount}</span></div>
+            <div className='text-2xl font-bold capitalize'>Total: <span>{formattedAmount(totalAmount)}</span></div>
             <div className='flex gap-3'>
               {cartProducts.length > 0 && <button className='btn checkout-btn bg-slate-800' onClick={onRemoveAllProducts}>All Clear</button>}
               {cartProducts.length > 0 && <button className='btn checkout-btn bg-slate-800'>Proceed to checkout</button>}
