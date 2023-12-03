@@ -45,7 +45,7 @@ function ShoppingCart({
             ? "block"
             : "none"
         }}>
-        <div className='shopping-cart rounded-md w-3/5 h-[90%] my-8 mx-auto bg-[#eee] p-4 flex flex-col relative text-slate-800 font-Roboto'>
+        <div className='shopping-cart rounded-md w-1/2 h-[90%] my-8 mx-auto bg-[#eee] p-4 flex flex-col relative text-slate-800 font-Roboto'>
           <div className='header-custom p-3 rounded-md bg-white py-2.5 px-5 flex justify-between'>
             <h2 className='text-3xl font-bold capitalize'>shopping cart</h2>
             <button  className='close-btn text-2xl duration-200 hover:opacity-50' onClick={onClose}>
@@ -74,11 +74,9 @@ function ShoppingCart({
                   </span>
                 </div>
                 <div className="flex justify-between items-center text-[20px] bg-text px-5 rounded-full">
-                  {product.qty > 1 &&
-                    <button className="svg-accent w-6 h-6 cursor-pointer hover:opacity-50" onClick={() => handleClick(product, -1)}>
-                      <AiOutlineMinusCircle />
-                    </button>
-                  }
+                  <button disabled={product.qty < 2} className="svg-accent w-6 h-6 cursor-pointer hover:opacity-50" onClick={() => handleClick(product, -1)}>
+                    <AiOutlineMinusCircle />
+                  </button>
                   <p id="number-of-items" className="px-3">{product.qty}</p>
                   <button className="svg-accent w-6 h-6 cursor-pointer hover:opacity-50" onClick={() => handleClick(product)}>
                     <AiOutlinePlusCircle />
@@ -92,10 +90,10 @@ function ShoppingCart({
                 </button>
               </div>
             ))}
-            <div className='text-2xl font-bold capitalize'>Total: <span>{formattedAmount(totalAmount)}</span></div>
+            <div className='text-2xl font-bold capitalize my-4'>Total: <span>{formattedAmount(totalAmount)}</span></div>
             <div className='flex gap-3'>
-              {cartProducts.length > 0 && <button className='btn checkout-btn bg-slate-800 py-2.5 px-5 text-base text-white self-center my-8' onClick={onRemoveAllProducts}>All Clear</button>}
-              {cartProducts.length > 0 && <button className='btn checkout-btn bg-slate-800 py-2.5 px-5 text-base text-white self-center my-8'>Proceed to checkout</button>}
+              {cartProducts.length > 0 && <button className='btn checkout-btn bg-slate-800 py-2.5 px-5 text-base text-white self-center my-4' onClick={onRemoveAllProducts}>All Clear</button>}
+              {cartProducts.length > 0 && <button className='btn checkout-btn bg-slate-800 py-2.5 px-5 text-base text-white self-center my-4'>Proceed to checkout</button>}
             </div>
           </div>
         </div>
