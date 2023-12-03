@@ -1,4 +1,3 @@
-import "../style/shoppingCart.css";
 import { useContext } from "react";
 import { ProductArray } from '../App';
 import { AiFillCloseCircle } from "react-icons/ai";
@@ -40,34 +39,34 @@ function ShoppingCart({
   return (
     <>
       <div
-        className='modal-custom'
+        className='modal-custom fixed inset-0 w-full h-full !bg-[#00000055] z-10'
         style={{
           display: visibility
             ? "block"
             : "none"
         }}>
-        <div className='shopping-cart rounded-md'>
-          <div className='header-custom p-3 rounded-md'>
+        <div className='shopping-cart rounded-md w-3/5 h-[90%] my-8 mx-auto bg-[#eee] p-4 flex flex-col relative text-slate-800'>
+          <div className='header-custom p-3 rounded-md bg-white py-2.5 px-5 flex justify-between'>
             <h2 className='text-3xl font-bold capitalize'>shopping cart</h2>
             <button  className='close-btn text-2xl duration-200 hover:opacity-50' onClick={onClose}>
               <AiFillCloseCircle />
             </button>
           </div>
-          <div className='cart-products'>
+          <div className='cart-products flex flex-col items-center py-4 overflow-y-scroll'>
             {cartProducts.length === 0 && (
-              <span className='empty-text font-bold'>
+              <span className='empty-text font-bold block p-8 m-auto'>
                 Your basket is currently empty
               </span>
             )}
             {cartProducts.map(product => (
-              <div className='cart-product rounded-md' key={product.id}>
+              <div className='cart-product rounded-md flex flex-row justify-between items-center w-full bg-white py-2.5 px-5 gap-3 border-solid border-4 border-[#eee]' key={product.id}>
                 <img
                   src={product.image}
                   alt={product.title}
-                  className='w-[200px]'
+                  className='w-[100px] bg-white'
                 />
-                <div className='product-info'>
-                  <h3>
+                <div className='product-info basis-[50%]'>
+                  <h3 className='font-normal text-base'>
                     {product.title}
                   </h3>
                   <span className='product-price'>
@@ -95,8 +94,8 @@ function ShoppingCart({
             ))}
             <div className='text-2xl font-bold capitalize'>Total: <span>{formattedAmount(totalAmount)}</span></div>
             <div className='flex gap-3'>
-              {cartProducts.length > 0 && <button className='btn checkout-btn bg-slate-800' onClick={onRemoveAllProducts}>All Clear</button>}
-              {cartProducts.length > 0 && <button className='btn checkout-btn bg-slate-800'>Proceed to checkout</button>}
+              {cartProducts.length > 0 && <button className='btn checkout-btn bg-slate-800 py-2.5 px-5 text-base text-white self-center my-8' onClick={onRemoveAllProducts}>All Clear</button>}
+              {cartProducts.length > 0 && <button className='btn checkout-btn bg-slate-800 py-2.5 px-5 text-base text-white self-center my-8'>Proceed to checkout</button>}
             </div>
           </div>
         </div>
