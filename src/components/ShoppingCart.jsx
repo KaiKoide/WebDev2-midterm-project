@@ -39,46 +39,44 @@ function ShoppingCart({
   return (
     <>
       <div
-        className='modal-custom fixed inset-0 w-full h-full !bg-[#00000055] z-10'
+        className='fixed inset-0 w-full h-full !bg-[#00000055] z-10'
         style={{
           display: visibility
             ? "block"
             : "none"
         }}>
-        <div className='shopping-cart rounded-md w-1/2 h-[90%] my-8 mx-auto bg-[#eee] p-4 flex flex-col relative text-slate-800 font-Roboto'>
+        <div className='rounded-md w-1/2 h-[90%] my-8 mx-auto bg-[#eee] p-4 flex flex-col relative text-slate-800 font-Roboto'>
           <div className='header-custom p-3 rounded-md bg-white py-2.5 px-5 flex justify-between'>
             <h2 className='text-3xl font-bold capitalize'>shopping cart</h2>
             <button  className='close-btn text-2xl duration-200 hover:opacity-50' onClick={onClose}>
               <AiFillCloseCircle />
             </button>
           </div>
-          <div className='cart-products flex flex-col items-center py-4 overflow-y-scroll'>
+          <div className='flex flex-col items-center py-4 overflow-y-scroll'>
             {cartProducts.length === 0 && (
               <span className='empty-text font-bold block p-8 m-auto'>
                 Your basket is currently empty
               </span>
             )}
             {cartProducts.map(product => (
-              <div className='cart-product rounded-md flex flex-row justify-between items-center w-full bg-white py-2.5 px-5 gap-3 border-solid border-4 border-[#eee]' key={product.id}>
+              <div className='rounded-md flex flex-row justify-between items-center w-full bg-white py-2.5 px-5 gap-3 border-solid border-4 border-[#eee]' key={product.id}>
                 <img
                   src={product.image}
                   alt={product.title}
                   className='w-[100px] bg-white'
                 />
-                <div className='product-info basis-[50%]'>
+                <div className='basis-[50%]'>
                   <h3 className='font-normal text-base'>
                     {product.title}
                   </h3>
-                  <span className='product-price'>
-                    {formattedAmount(product.price * product.qty)}
-                  </span>
+                  <span>{formattedAmount(product.price * product.qty)}</span>
                 </div>
                 <div className="flex justify-between items-center text-[20px] bg-text px-5 rounded-full">
-                  <button disabled={product.qty < 2} className="svg-accent w-6 h-6 cursor-pointer hover:opacity-50" onClick={() => handleClick(product, -1)}>
+                  <button disabled={product.qty < 2} className="w-6 h-6 cursor-pointer hover:opacity-50" onClick={() => handleClick(product, -1)}>
                     <AiOutlineMinusCircle />
                   </button>
-                  <p id="number-of-items" className="px-3">{product.qty}</p>
-                  <button className="svg-accent w-6 h-6 cursor-pointer hover:opacity-50" onClick={() => handleClick(product)}>
+                  <p className="px-3">{product.qty}</p>
+                  <button className="w-6 h-6 cursor-pointer hover:opacity-50" onClick={() => handleClick(product)}>
                     <AiOutlinePlusCircle />
                   </button>
                 </div>
@@ -92,8 +90,8 @@ function ShoppingCart({
             ))}
             <div className='text-2xl font-bold capitalize my-4'>Total: <span>{formattedAmount(totalAmount)}</span></div>
             <div className='flex gap-3'>
-              {cartProducts.length > 0 && <button className='btn checkout-btn bg-slate-800 py-2.5 px-5 text-base text-white self-center my-4' onClick={onRemoveAllProducts}>All Clear</button>}
-              {cartProducts.length > 0 && <button className='btn checkout-btn bg-slate-800 py-2.5 px-5 text-base text-white self-center my-4'>Proceed to checkout</button>}
+              {cartProducts.length > 0 && <button className='btn bg-slate-800 py-2.5 px-5 text-base text-white self-center my-4' onClick={onRemoveAllProducts}>All Clear</button>}
+              {cartProducts.length > 0 && <button className='btn bg-slate-800 py-2.5 px-5 text-base text-white self-center my-4'>Proceed to checkout</button>}
             </div>
           </div>
         </div>
