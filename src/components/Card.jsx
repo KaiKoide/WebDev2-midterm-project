@@ -17,7 +17,7 @@ function Card({ book }) {
 
   return (
     <>
-      <div className="card w-[300px] h-[430px] glass mx-10" id={book.index}>
+      <div className="card w-[300px] h-[430px] glass mx-10 font-Roboto" id={book.index}>
         <figure><img src={book.image} alt="book" /></figure>
         <div className="card-body">
           <h2 className="card-title">{book.title}</h2>

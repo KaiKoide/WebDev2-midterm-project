@@ -17,7 +17,7 @@ function Header() {
         <nav className='max-w-[85rem] w-full mx-auto px-4 flex items-center justify-between'>
           <a className='hover:opacity-80 transition-all duration-100' href='#'><GiBlackBook  className='text-2xl' /></a>
           <div className='flex'>
-            <ul className='flex px-5 gap-3 items-center'>
+            <ul className='flex px-5 gap-3 items-center font-Roboto'>
               <li className='uppercase duration-100 hover:opacity-80'><a href='#hero'>home</a></li>
               <li className='uppercase duration-100 hover:opacity-80'><a href='#menu'>products</a></li>
             </ul>

@@ -45,7 +45,7 @@ function ShoppingCart({
             ? "block"
             : "none"
         }}>
-        <div className='shopping-cart rounded-md w-3/5 h-[90%] my-8 mx-auto bg-[#eee] p-4 flex flex-col relative text-slate-800'>
+        <div className='shopping-cart rounded-md w-3/5 h-[90%] my-8 mx-auto bg-[#eee] p-4 flex flex-col relative text-slate-800 font-Roboto'>
           <div className='header-custom p-3 rounded-md bg-white py-2.5 px-5 flex justify-between'>
             <h2 className='text-3xl font-bold capitalize'>shopping cart</h2>
             <button  className='close-btn text-2xl duration-200 hover:opacity-50' onClick={onClose}>

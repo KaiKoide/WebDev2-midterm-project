@@ -6,7 +6,11 @@ export default {
     extend: {
       backgroundImage: {
         "hero-image": "url('/images/header.webp')"
-      }
+      },
+      fontFamily: {
+        "Eczar": ['Eczar', ...defaultTheme.fontFamily.serif],
+        "Roboto": ['Roboto']
+      },
     },
   },
   plugins: [require("daisyui")],

@@ -8,8 +8,8 @@ function HeroSection() {
         <div className="absolute left-0 right-0 top-[56px] h-full w-full overflow-hidden bg-fixed flex flex-col justify-center"
     style={{backgroundColor: 'rgba(0, 0, 0, 0.6)'}}>
           <div className='items-center'>
-            <h1 className='text-[80px] uppercase'>Ink Infinity</h1>
-            <h2 className='text-[24px]'>Infinite ideas, overflowing in a sea of ink.</h2>
+            <h1 className='text-[80px] uppercase font-Eczar'>Ink Infinity</h1>
+            <h2 className='text-[24px] font-Eczar'>Infinite ideas, overflowing in a sea of ink.</h2>
           </div>
         </div>
       </section>
