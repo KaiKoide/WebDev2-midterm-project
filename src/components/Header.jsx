@@ -12,7 +12,7 @@ function Header() {
 
   return (
     <>
-      <header className='flex sm:justify-start w-full text-sm py-4 bg-slate-800 text-zinc-200'>
+      <header className='flex sm:justify-start w-full text-sm py-4 bg-slate-800 text-zinc-200 fixed z-10 shadow-xl'>
         <ShoppingCart visibility={cartsVisibility} onClose={() => setCartsVisibility(false)} />
         <nav className='max-w-[85rem] w-full mx-auto px-4 flex items-center justify-between'>
           <a className='hover:opacity-80 transition-all duration-100' href='#'><GiBlackBook  className='text-2xl' /></a>

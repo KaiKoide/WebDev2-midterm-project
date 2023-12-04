@@ -39,7 +39,7 @@ function ShoppingCart({
   return (
     <>
       <div
-        className='fixed inset-0 w-full h-full !bg-[#00000055] z-10'
+        className='fixed inset-0 w-full h-full !bg-[#00000055] z-100'
         style={{
           display: visibility
             ? "block"

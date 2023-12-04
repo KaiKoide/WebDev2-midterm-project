@@ -24,7 +24,7 @@ function Card({ book }) {
           <p className="card-author">{book.author}</p>
           <p className="card-price before:content-['$']">{book.price}</p>
           <div className="card-actions justify-end">
-            <button className="btn bg-slate-800 text-zinc-200 capitalize" onClick={handleClick}>add to cart</button>
+            <button className="btn capitalize border-none duration-300 hover:bg-slate-800 hover:text-zinc-200" onClick={handleClick}>add to cart</button>
           </div>
         </div>
       </div>
